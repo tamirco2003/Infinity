@@ -1,0 +1,31 @@
+/* For titles. */
+.jormungandr {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+/* For subtitles. */
+.fenrir {
+  color: hsl(0, 0%, 50%);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+/* For form titles. */
+.jotun {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* For labels. */
+.draugr {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* For paragraphs. */
+.alf {
+  font-size: 24px;
+  font-weight: 400;
+}
