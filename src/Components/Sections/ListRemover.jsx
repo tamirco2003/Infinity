@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ModalDialog from '../ModalDialog';
+import ModalDialog from '../Collections/ModalDialog';
 import ModalDialogActions from '../Basic/ModalDialogActions';
 import Form from '../Basic/Form';
 import Button from '../Basic/Button';

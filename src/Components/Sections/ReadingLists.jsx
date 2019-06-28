@@ -5,7 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import List from '../Basic/List';
 import ListItem from '../Basic/ListItem';
 import IconButton from '../Basic/IconButton';
-import ActionBar from '../ActionBar';
+import ActionBar from '../Collections/ActionBar';
 
 const ReadingListItem = styled(ListItem)`
   transition: 0.1s;
@@ -28,8 +28,8 @@ function ReadingLists({
       </ActionBar>
       {lists.map((list, index) => (
         <ReadingListItem key={index} onClick={() => onListSelect(index)}>
-          <h1 className="jormungandr">{list.name}</h1>
-          <p className="fenrir" style={{ overflow: 'hidden' }}>{list.description}</p>
+          <h1 className="jormungandr" style={{ wordWrap: 'break-word' }}>{list.name}</h1>
+          <p className="fenrir" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{list.description}</p>
         </ReadingListItem>
       ))}
     </List>

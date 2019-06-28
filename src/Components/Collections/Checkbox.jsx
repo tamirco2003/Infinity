@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
-import IconButton from './Basic/IconButton';
+import IconButton from '../Basic/IconButton';
 
 function Checkbox({ checked, ...props }) {
   return (

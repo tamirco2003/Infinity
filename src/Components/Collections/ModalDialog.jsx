@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Modal from './Basic/Modal';
+import Modal from '../Basic/Modal';
 
 const Dialog = styled.div`
   background-color: #FFFFFF;

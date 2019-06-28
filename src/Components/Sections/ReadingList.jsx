@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlus,
+  faTimes,
+  faShareAlt,
+  faEllipsisV,
+} from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import List from '../Basic/List';
 import IconButton from '../Basic/IconButton';
-import ActionBar from '../ActionBar';
-import Issue from '../Issue';
+import ActionBar from '../Collections/ActionBar';
+import Issue from '../Collections/Issue';
+import IconDropdown from '../Collections/IconDropdown';
 
 function ReadingList({
   list,
@@ -16,13 +22,17 @@ function ReadingList({
   moveIssueDown,
   removeIssue,
   setIssueAsRead,
+  shareList,
   ...props
 }) {
   return (
     <List {...props}>
       <ActionBar title={list.name}>
-        <IconButton style={{ margin: '8px' }} icon={faTrashAlt} onClick={removeList} />
-        <IconButton style={{ margin: '8px' }} icon={faPlus} onClick={addIssues} />
+        <IconDropdown icon={faEllipsisV}>
+          <IconButton style={{ margin: '8px' }} icon={faTrashAlt} onClick={removeList} />
+          <IconButton style={{ margin: '8px' }} icon={faShareAlt} onClick={shareList} />
+          <IconButton style={{ margin: '8px' }} icon={faPlus} onClick={addIssues} />
+        </IconDropdown>
         <IconButton style={{ margin: '8px' }} icon={faTimes} onClick={onClose} />
       </ActionBar>
       {list.issues.map((issue, index) => (
@@ -50,6 +60,7 @@ ReadingList.propTypes = {
   moveIssueDown: PropTypes.func.isRequired,
   removeIssue: PropTypes.func.isRequired,
   setIssueAsRead: PropTypes.func.isRequired,
+  shareList: PropTypes.func.isRequired,
 };
 
 export default ReadingList;

@@ -25,7 +25,11 @@ function IconButton({ icon, ...props }) {
 }
 
 IconButton.propTypes = {
-  icon: PropTypes.arrayOf(PropTypes.string).isRequired,
+  icon: PropTypes.shape({
+    iconName: PropTypes.string,
+    prefix: PropTypes.string,
+    icon: PropTypes.array,
+  }).isRequired,
 };
 
 export default IconButton;

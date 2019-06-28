@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import ModalDialog from '../ModalDialog';
+import ModalDialog from '../Collections/ModalDialog';
 import Textbox from '../Basic/Textbox';
 import Form from '../Basic/Form';
 import ModalDialogActions from '../Basic/ModalDialogActions';

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
-import ListItem from './Basic/ListItem';
-import List from './Basic/List';
-import IconButton from './Basic/IconButton';
+import ListItem from '../Basic/ListItem';
+import List from '../Basic/List';
+import IconButton from '../Basic/IconButton';
 import Checkbox from './Checkbox';
 
 const IssueContainer = styled.div`
@@ -52,7 +52,7 @@ function Issue({
 
 Issue.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   read: PropTypes.bool.isRequired,
   moveUp: PropTypes.func.isRequired,
   moveDown: PropTypes.func.isRequired,

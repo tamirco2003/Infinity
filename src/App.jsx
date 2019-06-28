@@ -2,12 +2,13 @@ import './Typography.css';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import AppBar from './Components/Basic/AppBar';
-import ReadingLists from './Components/Collections/ReadingLists';
-import ReadingList from './Components/Collections/ReadingList';
+import ReadingLists from './Components/Sections/ReadingLists';
+import ReadingList from './Components/Sections/ReadingList';
 import MainContent from './Components/Basic/MainContent';
-import ListAdder from './Components/Collections/ListAdder';
-import ListRemover from './Components/Collections/ListRemover';
-import IssueAdder from './Components/Collections/IssueAdder';
+import ListAdder from './Components/Sections/ListAdder';
+import ListRemover from './Components/Sections/ListRemover';
+import IssueAdder from './Components/Sections/IssueAdder';
+import ListSharer from './Components/Sections/ListSharer';
 
 const theme = {
   main: {
@@ -28,12 +29,25 @@ function App() {
   const [addingList, setAddingList] = useState(false);
   const [removingList, setRemovingList] = useState(false);
   const [addingIssues, setAddingIssues] = useState(false);
+  const [sharingList, setSharingList] = useState(false);
 
   useEffect(() => {
     const storedLists = localStorage.getItem('lists');
+    const searchParams = new URLSearchParams(window.location.search);
+    let newList = searchParams.get('newlist') || null;
+
+    if (newList) {
+      newList = JSON.parse(atob(newList));
+    }
 
     if (storedLists) {
-      setLists(JSON.parse(storedLists));
+      if (newList) {
+        setLists([...JSON.parse(storedLists), newList]);
+      } else {
+        setLists(JSON.parse(storedLists));
+      }
+    } else if (newList) {
+      setLists([newList]);
     }
   }, []);
 
@@ -97,6 +111,16 @@ function App() {
                   listsCopy[currentList].issues[i].read = !listsCopy[currentList].issues[i].read;
                   setLists(listsCopy);
                 }}
+                shareList={() => {
+                  if (navigator.share) {
+                    navigator.share({
+                      title: 'Infinity',
+                      url: `${window.location.href.split('?')[0]}?newlist=${btoa(JSON.stringify(lists[currentList]))}`,
+                    });
+                  } else {
+                    setSharingList(true);
+                  }
+                }}
               />
             )
           }
@@ -122,7 +146,7 @@ function App() {
 
             const listsCopy = [...lists];
 
-            listsCopy.splice(currentList);
+            listsCopy.splice(currentList, 1);
             setLists(listsCopy);
           }}
         />
@@ -137,6 +161,11 @@ function App() {
             listsCopy[currentList].issues = listsCopy[currentList].issues.concat(issues);
             setLists(listsCopy);
           }}
+        />
+        <ListSharer
+          open={sharingList}
+          handleClose={() => setSharingList(false)}
+          link={`${window.location.href.split('?')[0]}?newlist=${btoa(JSON.stringify(lists[currentList]))}`}
         />
       </>
     </ThemeProvider>

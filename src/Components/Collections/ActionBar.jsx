@@ -12,7 +12,7 @@ const StyledActionBar = styled.nav`
 function ActionBar({ title, children, ...props }) {
   return (
     <StyledActionBar {...props}>
-      <h1 className="draugr" style={{ flexGrow: 1 }}>{title}</h1>
+      <h1 className="draugr" style={{ flexGrow: 1, overflow: 'hidden' }}>{title}</h1>
       {children}
     </StyledActionBar>
   );

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import ModalDialog from '../ModalDialog';
+import ModalDialog from '../Collections/ModalDialog';
 import Form from '../Basic/Form';
 import ModalDialogActions from '../Basic/ModalDialogActions';
 import Button from '../Basic/Button';
