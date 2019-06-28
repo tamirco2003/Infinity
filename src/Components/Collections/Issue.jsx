@@ -20,6 +20,7 @@ const IssueName = styled.a.attrs(() => ({
   flex-grow: 1;
   margin-left: 16px;
   text-decoration: ${props => (props.read ? 'line-through' : 'initial')};
+  word-break: 'break-word';
   color: inherit;
 `;
 
